@@ -29,13 +29,13 @@ ggmap(myMap)+geom_point(aes(x = long, y = lat,size=city,color=city), data = subs
   
 ggmap(get_googlemap(center = c(lon = 	-119.417931, lat =36.778259),zoom=7,maptype ='roadmap',color = 'color'))+geom_point(aes(x = long, y = lat,size=city,color=city),data = subset(data_usa1,city %in% c("Mountain View","San Jose","San Francisco","Sunnyvale","Los Angeles","Santa Clara")),shape=21)+ ggtitle("California")+ theme(plot.title = element_text(hjust=0.5)) #Focus on California
 ```
-Estimate the probability wehter a customer buy in the USA and in California
+Create data to determine whether a user buy or not in california cities
 ```{r}
 dat <- data_usa; dat$transactions <-ifelse(dat$transactions >=1, 1,0)#Indicate wether a customer buy or not
 dat_cali <- subset(dat, city %in% c("Mountain View","San Jose","San Francisco","Sunnyvale","Los Angeles","Santa Clara"))#Select cities in California
 
 ```
-Estimate probabilities by general source rules
+Estimate probabilities by sources grouped by general rules
 ```{r}
 dat_cali_organic <- subset(dat_cali, channelGrouping %in% "Organic Search") #Select only Organic search source type
 convert <- sapply(dat_cali_organic,is.factor)
