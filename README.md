@@ -1,3 +1,3 @@
 # Young Kweon
 
-Estimate probabilities of conversions for marketing campaigns
+Estimate the probability of convention rate in the biggest market area for marketing campaigns
